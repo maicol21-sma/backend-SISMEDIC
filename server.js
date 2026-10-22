@@ -5,7 +5,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 const consultoriosRoutes = require("./routes/consultorios");
 const pacientesRoutes = require("./routes/pacientes");
 const citasRoutes = require("./routes/citas");
