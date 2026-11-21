@@ -1,10 +1,21 @@
 const db = require("../db");
 
 // GET
-const obtenerPacientes = (req, res) => {
-  db.query("SELECT * FROM pacientes", (error, resultados) => {
-    if (error) return res.status(500).json(error);
 
+const obtenerPacientes = (req, res) => {
+  console.log("1. Solicitud GET /api/pacientes recibida");
+
+  db.query("SELECT * FROM pacientes", (error, resultados) => {
+    console.log("2. MySQL terminó la consulta");
+
+    if (error) {
+      console.error("Error al consultar pacientes:", error);
+      return res.status(500).json({
+        mensaje: "Error al consultar pacientes"
+      });
+    }
+
+    console.log("3. Enviando respuesta al navegador");
     res.json(resultados);
   });
 };
